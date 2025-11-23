@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Leo te amo</title>
+  <style>
+    :root{
+      --pink:#ffeef6;
+      --red:#ff3b30;
+      --yellow:#fff7c2; /* amarillo pastel */
+    }
+    html,body{
+      height:100%;
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+    }
+    body{
+      background:var(--pink);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    main{text-align:center;padding:2rem}
+    h1{font-size:clamp(1.75rem,4vw,3.25rem);margin:0 0 1.5rem}
+    #loveBtn{
+      background:var(--red);
+      color:white;
+      border:0;
+      padding:1.25rem 2rem;
+      font-size:1.25rem;
+      border-radius:14px;
+      cursor:pointer;
+      box-shadow:0 8px 20px rgba(0,0,0,0.12);
+      transition:transform .12s ease;
+    }
+    #loveBtn:active{transform:scale(.98)}
+    .wall{
+      padding:2rem;
+      max-width:100ch;
+      margin:0 auto;
+      line-height:1.4;
+      font-size:1.15rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Leo te amo uwu</h1>
+    <button id="loveBtn" aria-label="Díselo a Leo">Tócame:3</button>
+  </main>
+
+  <script>
+    (function(){
+      const btn = document.getElementById('loveBtn');
+
+      function showLove() {
+        const phrase = 'Te amo mucho Leo ';
+        const repeats = 5000;
+
+        const container = document.createElement('div');
+        container.className = 'wall';
+
+        const top = document.createElement('h1');
+        top.textContent = 'Leo te amo';
+
+        for (let i = 0; i < repeats; i++) {
+          const p = document.createElement('p');
+          p.textContent = phrase + (i % 3 === 2 ? '\n' : ' ');
+          container.appendChild(p);
+        }
+
+        const back = document.createElement('button');
+        back.textContent = 'Atrástraztraz t la hinco por detrás';
+        back.style.marginTop = '1.25rem';
+        back.style.padding = '0.8rem 1.4rem';
+        back.style.fontSize = '1rem';
+        back.style.borderRadius = '10px';
+        back.style.border = '0';
+        back.style.cursor = 'pointer';
+        back.addEventListener('click', () => location.reload());
+        container.appendChild(back);
+
+        document.body.innerHTML = '';
+        document.body.style.background = 'var(--yellow)'; /* FONDO AMARILLO PASTEL */
+        document.body.appendChild(container);
+      }
+
+      btn.addEventListener('click', showLove);
+
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          showLove();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
